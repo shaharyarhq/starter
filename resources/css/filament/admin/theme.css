@@ -1,0 +1,149 @@
+@import "../../../../vendor/filament/filament/resources/css/theme.css";
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+/* Make Button Rounded  */
+.fi-btn {
+    @apply rounded-full;
+}
+
+/* Make the color of the primary button text to white when the button has a background color  */
+.fi-btn.fi-color-primary:is([class*="fi-bg-color-"]) {
+    --bg: var(--color-600) !important;
+    --text: white !important;
+}
+
+.fi-btn.fi-color-primary:hover:is([class*="fi-bg-color-"]) {
+    --hover-bg: var(--color-500) !important;
+    --hover-text: white !important;
+}
+
+/* Additional CSS for background image pattern */
+.bg-blob-img-outer {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+    /* @apply -z-10; */
+}
+
+.bg-blob-img {
+    @apply w-full h-full object-cover;
+    background-image: url("../../../images/background/pattern.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+/* Smooth Transitions */
+.fi-panel-content {
+    @apply transition-opacity duration-300 ease-out;
+}
+
+/* Giving the panel custom brand styles */
+.fi-main-ctn {
+    @apply md:rounded-4xl bg-gray-50 dark:bg-gray-950 my-2;
+}
+
+.fi-main-ctn {
+    --tw-ring-color: color-mix(in oklab, var(--gray-950) 10%, transparent);
+    --tw-shadow:
+        0 1px 3px 0 var(--tw-shadow-color, #0000001a),
+        0 1px 2px -1px var(--tw-shadow-color, #0000001a);
+    --tw-ring-shadow: var(--tw-ring-inset, ) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow:
+        var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+        var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-ring-color: color-mix(in oklab, var(--gray-950) 10%, transparent);
+}
+
+.fi-layout {
+    @apply md:bg-white md:dark:bg-gray-900;
+}
+
+.fi-section {
+    @apply p-1 dark:p-0 bg-gray-100 shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10;
+}
+
+.fi-section-content-ctn {
+    @apply bg-white dark:bg-transparent rounded-xl dark:rounded-none shadow-sm ring-1 ring-gray-950/5 p-2 dark:p-0;
+}
+
+.fi-section-header {
+    /* padding-inline: calc(var(--spacing) * 6); */
+    /* padding-block: calc(var(--spacing) * 2); */
+    @apply px-6 py-2 dark:py-4;
+}
+
+/* Remove the bottom border of topbar */
+.fi-topbar {
+    --tw-shadow: none;
+    --tw-ring-shadow: none;
+    box-shadow: none;
+    --tw-ring-color: none;
+}
+
+/* Modals */
+.fi-modal-slide-over {
+    .fi-modal-window {
+        @apply backdrop-blur-sm rounded-xl shadow-xl max-h-[calc(100vh-2rem)] mt-2.5 mr-3;
+    }
+}
+
+/* Re assign transition that draggable modal plugin breaks */
+.fi-modal-window.fi-modal-window {
+    transition: all 200ms !important;
+}
+
+/* Action Modals */
+.fi-ac-modal {
+    @apply rounded-xl;
+}
+
+.fi-modal-close-overlay {
+    @apply backdrop-blur-sm;
+}
+
+/* Scrollbar Styles  */
+@media (min-width: 768px) {
+    ::-webkit-scrollbar {
+        height: 12px;
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #e5e7eb;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #d1d5db;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #9ca3af;
+    }
+
+    .dark ::-webkit-scrollbar-track {
+        background: #101215;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+        background: #2a2d33;
+    }
+
+    .dark ::-webkit-scrollbar-thumb:hover {
+        background: #3a3f46;
+    }
+
+    @supports (-moz-appearance: none) {
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #d1d5db #e5e7eb;
+        }
+
+        .dark,
+        .dark * {
+            scrollbar-color: #2a2d33 #101215;
+        }
+    }
+}
